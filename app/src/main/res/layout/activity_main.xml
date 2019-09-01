@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+    <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv_example1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderColor="#52909FA0"
+            app:borderWidth="2dp"
+            app:circleColor="#46ECB8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow="true"
+            app:text="5"
+            app:textColor="@color/colorAccent"
+            app:textSize="82sp" />
+
+    <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv_example5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderColor="#52909FA0"
+            app:borderWidth="2dp"
+            app:circleColor="#46ECB8"
+            app:layout_constraintStart_toEndOf="@id/ctv_example1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="s"
+            app:textSize="82sp" />
+
+    <com.jiujiu.lib.CircleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="f"
+            app:textSize="22sp" />
+
+
+    <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv_example2"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:padding="22dp"
+            app:borderColor="#52909FA0"
+            app:borderWidth="2dp"
+            app:layout_constraintStart_toStartOf="@id/ctv_example1"
+            app:layout_constraintTop_toBottomOf="@id/ctv_example1"
+            app:maxLength="2"
+            app:text="FdddsD"
+            app:textColor="@color/colorAccent"
+            app:textSize="42sp" />
+
+    <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv_example3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:borderColor="@color/colorAccent"
+            app:borderWidth="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="d"
+            app:textSize="23sp" />
+
+
+    <com.jiujiu.lib.CircleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="22dp"
+            app:borderColor="@color/colorAccent"
+            app:borderWidth="2dp"
+            app:layout_constraintStart_toEndOf="@id/ctv_example2"
+            app:layout_constraintTop_toBottomOf="@id/ctv_example1"
+            app:maxLength="2"
+            app:shadow="true"
+            app:text="FdddsD"
+            app:textSize="42sp"
+            app:textStyle="EMPTY">
+
+    </com.jiujiu.lib.CircleTextView>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_launcher_background"
+            android:drawableStart="@drawable/ic_android_black_24dp"
+            android:gravity="center"
+            android:text="H"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
