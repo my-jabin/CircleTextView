@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TestActivity">
+
+
+    <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderColor="@android:color/darker_gray"
+            app:borderWidth="2dp"
+            app:circleColor="#a5d6a7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow="true"
+            app:text="H"
+            app:textSize="32sp" />
+
+    <Button
+            android:id="@+id/buttonSetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setText"
+            android:text="setText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ctv" />
+
+    <Button
+            android:id="@+id/buttonSetTestSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setTestSize"
+            android:text="setTextSize"
+            app:layout_constraintStart_toEndOf="@id/buttonSetText"
+            app:layout_constraintTop_toTopOf="@id/buttonSetText" />
+
+    <Button
+            android:id="@+id/buttonSetTestColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setTextColor"
+            android:text="setTextColor"
+            app:layout_constraintStart_toEndOf="@id/buttonSetTestSize"
+            app:layout_constraintTop_toTopOf="@id/buttonSetTestSize" />
+
+
+    <Button
+            android:id="@+id/buttonSetCircleColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setCircleColor"
+            android:text="setCircleColor"
+            app:layout_constraintStart_toStartOf="@id/buttonSetText"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetTestSize" />
+
+    <Button
+            android:id="@+id/buttonSetBorderColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setBorderColor"
+            android:text="setBorderColor"
+            app:layout_constraintStart_toEndOf="@id/buttonSetCircleColor"
+            app:layout_constraintTop_toTopOf="@id/buttonSetCircleColor" />
+
+    <Button
+            android:id="@+id/buttonSetBorderWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setBorderWidth"
+            android:text="setBorderWidth"
+            app:layout_constraintStart_toEndOf="@id/buttonSetBorderColor"
+            app:layout_constraintTop_toTopOf="@id/buttonSetBorderColor" />
+
+    <Button
+            android:id="@+id/buttonSetTextFill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setTextFill"
+            android:text="setTextFill"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetCircleColor" />
+
+    <Button
+            android:id="@+id/buttonSetTextBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setTextBorder"
+            android:text="setTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetTextFill" />
+
+    <Button
+            android:id="@+id/buttonSetHasShadow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setHasShadow"
+            android:text="setHasShadow"
+            app:layout_constraintStart_toEndOf="@id/buttonSetTextFill"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetCircleColor" />
+
+    <Button
+            android:id="@+id/buttonSetMaxLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setMaxLength"
+            android:text="setMaxLength"
+            app:layout_constraintStart_toEndOf="@id/buttonSetHasShadow"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetCircleColor" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetTextBorder">
+
+        <com.jiujiu.lib.CircleTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:borderColor="#52909FA0"
+                app:borderWidth="2dp"
+                app:circleColor="#ffb74d"
+                app:text="S"
+                app:textSize="22sp" />
+
+        <com.jiujiu.lib.CircleTextView
+                android:id="@+id/ctv_example2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:padding="16dp"
+                app:borderColor="#52909FA0"
+                app:borderWidth="2dp"
+                app:maxLength="2"
+                app:text="Hello"
+                app:textColor="@color/colorAccent"
+                app:textSize="32sp" />
+
+
+        <com.jiujiu.lib.CircleTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                app:circleColor="#0097a7"
+                app:shadow="true"
+                app:text="World"
+                app:textColor="@android:color/primary_text_dark"
+                app:textSize="32sp"
+                app:textStyle="EMPTY" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
