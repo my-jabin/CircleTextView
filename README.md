@@ -7,8 +7,6 @@ A easy-to-use CircleTextView, but it's **NOT** a `TextView`. It derived from `Vi
 ## Screenshot
 ![screenshot](https://github.com/my-jabin/CircleTextView/blob/master/images/screenshot.png)
 
-todo: https://github.com/ChrisRM/material-theme-jetbrains
-
 ## Download
 
 ### Gradle
