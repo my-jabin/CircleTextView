@@ -5,10 +5,12 @@
 A easy-to-use CircleTextView, but it's **NOT** a `TextView`. It derived from `View` so it has no fancy properties like `drawableLeft` in the `TextView` or other properties.  
 
 ## Screenshot
-![images/screenshot.png]
+![screenshot](https://github.com/my-jabin/CircleTextView/blob/master/images/screenshot.png)
+
+todo: https://github.com/ChrisRM/material-theme-jetbrains
 
 ## Download
-Current version is: *v0.1.0*
+
 ### Gradle
 Step 1. Add it in your root build.gradle at the end of repositories:
 
