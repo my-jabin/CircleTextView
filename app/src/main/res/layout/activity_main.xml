@@ -20,8 +20,9 @@
                 app:borderColor="#52909FA0"
                 app:borderWidth="2dp"
                 app:circleColor="#ffb74d"
+                app:letterSpace="0.2"
                 app:text="Android"
-                app:textSize="24sp" />
+                app:textSize="18sp" />
 
 
         <TextView
@@ -41,13 +42,14 @@
 
         <com.jiujiu.lib.CircleTextView
                 android:id="@+id/ctv_example2"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:padding="16dp"
                 app:borderColor="#52909FA0"
                 app:borderWidth="2dp"
                 app:maxLength="1"
                 app:text="Java"
+                app:offset="32dp"
                 app:textColor="@color/colorAccent"
                 app:textSize="58sp" />
 
@@ -67,8 +69,8 @@
             android:orientation="horizontal">
 
         <com.jiujiu.lib.CircleTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:padding="16dp"
                 app:circleColor="#0097a7"
                 app:shadow="true"

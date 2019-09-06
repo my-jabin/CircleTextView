@@ -14,5 +14,7 @@
             <enum name="FILL" value="1" />
             <enum name="EMPTY" value="2" />
         </attr>
+        <attr name="letterSpace" format="float" />
+        <attr name="offset" format="dimension" />
     </declare-styleable>
 </resources>

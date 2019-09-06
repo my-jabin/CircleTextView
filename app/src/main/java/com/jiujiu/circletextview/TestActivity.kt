@@ -65,5 +65,11 @@ class TestActivity : AppCompatActivity() {
         ctv.setTextStyle(CircleTextView.EMPTY)
     }
 
+    fun setOffset(view: View) {
+        ctv.setOffset(Random.nextInt(10, 50))
+    }
 
+    fun setLetterSpace(view: View) {
+        ctv.setLetterSpace(Random.nextInt(1, 10) / 10f)
+    }
 }

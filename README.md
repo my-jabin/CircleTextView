@@ -5,7 +5,7 @@
 A easy-to-use CircleTextView, but it's **NOT** a `TextView`. It derived from `View` so it has no fancy properties like `drawableLeft` in the `TextView` or other properties.  
 
 ## Screenshot
-![screenshot](https://github.com/my-jabin/CircleTextView/blob/master/images/screenshot.png)
+![screenshot](images/screenshot.png)
 
 ## Download
 
@@ -62,3 +62,15 @@ Step 2. Add the dependency
                 app:text="Android"
                 app:textSize="24sp" />
 ```
+
+Customization:
+* Text color
+* Text size
+* Border color
+* Border width
+* Circle color
+* length of text
+* shadow
+* letter space with value between \[0,1\].
+* offset: could be used to enlarge the circle
+![](images/offset.png =100x100)

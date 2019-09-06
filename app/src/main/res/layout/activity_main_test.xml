@@ -6,19 +6,25 @@
         android:layout_height="match_parent"
         tools:context=".TestActivity">
 
-
     <com.jiujiu.lib.CircleTextView
             android:id="@+id/ctv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:borderColor="@android:color/darker_gray"
-            app:borderWidth="2dp"
             app:circleColor="#a5d6a7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shadow="true"
             app:text="H"
             app:textSize="32sp" />
+
+    <com.jiujiu.lib.CircleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderColor="@color/colorAccent"
+            app:borderWidth="2dp"
+            app:layout_constraintStart_toEndOf="@id/ctv"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <Button
             android:id="@+id/buttonSetText"
@@ -111,49 +117,63 @@
             app:layout_constraintStart_toEndOf="@id/buttonSetHasShadow"
             app:layout_constraintTop_toBottomOf="@id/buttonSetCircleColor" />
 
-    <LinearLayout
-            android:layout_width="match_parent"
+    <Button
+            android:id="@+id/buttonSetOffset"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonSetTextBorder">
+            android:onClick="setOffset"
+            android:text="setOffset"
+            app:layout_constraintStart_toEndOf="@id/buttonSetTextBorder"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetTextFill" />
 
-        <com.jiujiu.lib.CircleTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                app:borderColor="#52909FA0"
-                app:borderWidth="2dp"
-                app:circleColor="#ffb74d"
-                app:text="S"
-                app:textSize="22sp" />
+    <Button
+            android:id="@+id/buttonSetLetterSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setLetterSpace"
+            android:text="setLetterSpace"
+            app:layout_constraintStart_toEndOf="@id/buttonSetOffset"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetTextFill" />
 
-        <com.jiujiu.lib.CircleTextView
-                android:id="@+id/ctv_example2"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:padding="16dp"
-                app:borderColor="#52909FA0"
-                app:borderWidth="2dp"
-                app:maxLength="2"
-                app:text="Hello"
-                app:textColor="@color/colorAccent"
-                app:textSize="32sp" />
-
-
-        <com.jiujiu.lib.CircleTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="12dp"
-                app:circleColor="#0097a7"
-                app:shadow="true"
-                app:text="World"
-                app:textColor="@android:color/primary_text_dark"
-                app:textSize="32sp"
-                app:textStyle="EMPTY" />
-    </LinearLayout>
+    <!--    <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:gravity="center"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:paddingTop="32dp"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/buttonSetTextBorder">-->
+    <!--        <com.jiujiu.lib.CircleTextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:padding="16dp"-->
+    <!--                app:borderColor="#52909FA0"-->
+    <!--                app:borderWidth="2dp"-->
+    <!--                app:text="g"-->
+    <!--                app:circleColor="#ffb74d"-->
+    <!--                app:textSize="22sp" />-->
+    <!--        <com.jiujiu.lib.CircleTextView-->
+    <!--                android:id="@+id/ctv_example2"-->
+    <!--                android:layout_width="100dp"-->
+    <!--                android:layout_height="80dp"-->
+    <!--                android:padding="16dp"-->
+    <!--                app:borderColor="#52909FA0"-->
+    <!--                app:borderWidth="2dp"-->
+    <!--                app:maxLength="2"-->
+    <!--                app:text="Hello"-->
+    <!--                app:textColor="@color/colorAccent"-->
+    <!--                app:textSize="32sp" />-->
+    <!--        <com.jiujiu.lib.CircleTextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:paddingStart="12dp"-->
+    <!--                app:circleColor="#0097a7"-->
+    <!--                app:shadow="true"-->
+    <!--                app:text="World"-->
+    <!--                app:textColor="@android:color/primary_text_dark"-->
+    <!--                app:textSize="32sp"-->
+    <!--                app:textStyle="EMPTY" />-->
+    <!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
