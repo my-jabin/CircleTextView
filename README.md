@@ -73,4 +73,4 @@ Customization:
 * shadow
 * letter space with value between \[0,1\].
 * offset: could be used to enlarge the circle
-![](images/offset.png =100x100)
+![](images/offset.png)
