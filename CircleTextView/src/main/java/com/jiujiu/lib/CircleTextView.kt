@@ -320,7 +320,7 @@ class CircleTextView @JvmOverloads constructor(
         }
     }
 
-    fun getText() = mText
+    fun getText(): String = mText.toString()
 
     // Unit in dp
     fun setOffset(offset: Int) {
