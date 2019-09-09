@@ -5,7 +5,7 @@
 A easy-to-use CircleTextView, but it's **NOT** a `TextView`. It derived from `View` so it has no fancy properties like `drawableLeft` in the `TextView` or other properties.  
 
 ## Screenshot
-![screenshot](images/screenshot.png)
+![screenshot](images/screenshot-640.png)
 
 ## Download
 
@@ -69,9 +69,15 @@ Customization:
 * Border color
 * Border width
 * Circle color
+* Circle size: Match_parent or wrap_text
 * length of text
 * shadow
 * letter space with value between \[0,1\].
-* offset: could be used to enlarge the circle
+* offset: could be used to enlarge the circle. If circle size is set to
+  match_parent, offset has no effects
 
-![](images/offset.png)
+![](images/offset.png) 
+
+## About
+* It's still in developing and testing 
+* Open for any suggestions and I would appreciate it.

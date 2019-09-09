@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import kotlin.math.max
@@ -18,6 +19,7 @@ class CircleTextView @JvmOverloads constructor(
     companion object {
         const val FILL = 1
         const val EMPTY = 2
+        private val TAG: String = "CircleTextView"
     }
 
     private var mOffset: Float = 0f
@@ -51,6 +53,7 @@ class CircleTextView @JvmOverloads constructor(
     private var mRadius: Float = 0f
     private var circleX: Float = 0f
     private var circleY: Float = 0f
+    private var mCircleSize: Int
 
     init {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
@@ -80,11 +83,14 @@ class CircleTextView @JvmOverloads constructor(
         hasText = typedArray.hasValueOrEmpty(R.styleable.CircleTextView_text)
         mText = if (hasText) typedArray.getText(R.styleable.CircleTextView_text) else ""
         mMaxLength = typedArray.getInt(R.styleable.CircleTextView_maxLength, Int.MAX_VALUE)
+        mCircleSize =
+            typedArray.getInt(R.styleable.CircleTextView_circle_size, CircleSize.WRAP_TEXT.ordinal)
         typedArray.recycle()
         setUpPaint()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        Log.d(TAG, "onMeasure....")
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
@@ -94,23 +100,7 @@ class CircleTextView @JvmOverloads constructor(
         var mHeight = heightSize
 
         if (hasText) {
-            mTextPaint.textSize = mTextSize.toFloat()
-            mTextWidth = if (mMaxLength != Int.MAX_VALUE && mMaxLength < mText.length) {
-                mTextPaint.getTextBounds(
-                    mText.toString().substring(0, mMaxLength),
-                    0,
-                    mMaxLength,
-                    mRect
-                )
-                mTextPaint.measureText(mText.toString().substring(0, mMaxLength))
-            } else {
-                mTextPaint.getTextBounds(mText.toString(), 0, mText.length, mRect)
-                mTextPaint.measureText(mText.toString())
-            }
-
-            val fm = mTextPaint.fontMetrics
-            mTextHeight = min(fm.descent - fm.ascent, mRect.height().toFloat())
-
+            measureText()
             if (widthMode != MeasureSpec.EXACTLY) {
                 mWidth =
                     (paddingStart + paddingRight + mTextWidth + 2 * mBorderWidth + 2 * mOffset).toInt() + 1
@@ -130,10 +120,11 @@ class CircleTextView @JvmOverloads constructor(
             mHeight = 0
         }
         setMeasuredDimension(max(mWidth, mHeight), max(mWidth, mHeight))
+        setUpCircle(max(mWidth, mHeight), max(mWidth, mHeight))
     }
 
     override fun onDraw(canvas: Canvas?) {
-
+        Log.d(TAG, "on drawing...")
         canvas?.translate(circleX, circleY)
 
         if (mShadow && mCircleColor != Color.TRANSPARENT) {
@@ -175,23 +166,58 @@ class CircleTextView @JvmOverloads constructor(
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        Log.d(TAG, "on size changed..")
         super.onSizeChanged(w, h, oldw, oldh)
+        setUpCircle(w, h)
+    }
+
+    private fun measureText() {
+        Log.d(TAG, "measuring text...")
+        mTextPaint.textSize = mTextSize.toFloat()
+        mTextPaint.letterSpacing = mLetterSpace
+        mTextWidth = if (mMaxLength != Int.MAX_VALUE && mMaxLength < mText.length) {
+            mTextPaint.getTextBounds(
+                mText.toString().substring(0, mMaxLength),
+                0,
+                mMaxLength,
+                mRect
+            )
+            mTextPaint.measureText(mText.toString().substring(0, mMaxLength))
+        } else {
+            mTextPaint.getTextBounds(mText.toString(), 0, mText.length, mRect)
+            mTextPaint.measureText(mText.toString())
+        }
+
+        val fm = mTextPaint.fontMetrics
+        mTextHeight = min(fm.descent - fm.ascent, mRect.height().toFloat())
+    }
+
+    private fun setUpCircle(w: Int, h: Int) {
         circleX = if (mShadow) {
-            paddingLeft + (w - paddingLeft - paddingRight - mShadowX) / 2f
+            paddingLeft + (w - paddingLeft - paddingRight - mShadowX) / 2f + mShadowX / 2
         } else {
             paddingLeft + (w - paddingLeft - paddingRight) / 2f
         }
         circleY = if (mShadow) {
-            paddingTop + (h - paddingTop - paddingBottom - mShadowY) / 2f
+            paddingTop + (h - paddingTop - paddingBottom - mShadowY) / 2f + mShadowY / 2
         } else {
-            paddingTop + (h - paddingTop - paddingBottom) / 2f
+            paddingTop + (h - paddingTop - paddingBottom) / 2f + 1
         }
-        mRadius =
-            if (mTextWidth > mTextHeight - mOffset) (mTextWidth + 2 * mOffset) / 2 else mTextHeight / 2 + mOffset
+
+        if (mCircleSize == CircleSize.WRAP_TEXT.ordinal) {
+            mRadius =
+                if (mTextWidth > mTextHeight - mOffset) (mTextWidth + 2 * mOffset) / 2 else mTextHeight / 2 + mOffset
+            Log.d(TAG, "Set up circle:  text width= $mTextWidth, radius=$mRadius")
+        } else if (mCircleSize == CircleSize.MATCH_PARENT.ordinal) {
+            mRadius = max(
+                (w - paddingStart - paddingEnd - 2 * mBorderWidth - mShadowX) / 2f,
+                (h - paddingTop - paddingBottom - 2 * mBorderWidth - mShadowY) / 2f
+            )
+        }
     }
 
     private fun setUpPaint() {
-
+        Log.d(TAG, "setting up paint")
         mBorderPaint.reset()
         mBorderPaint.apply {
             style = Paint.Style.STROKE
@@ -226,47 +252,44 @@ class CircleTextView @JvmOverloads constructor(
         }
     }
 
-    fun setText(text: String) {
-        mText = text
+    private fun setUp() {
+        setUpPaint()
         requestLayout()
         invalidate()
+    }
+
+    fun setText(text: String) {
+        mText = text
+        hasText = !mText.isBlank()
+        setUp()
     }
 
     // unit: sp
     fun setTestSize(size: Int) {
         this.mTextSize = (size * context.resources.displayMetrics.scaledDensity).toInt()
         mOffset = mTextSize / 3f
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun setTextColor(color: Int) {
         mTextColor = color
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun setCircleColor(color: Int) {
         mCircleColor = color
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun setBorderColor(color: Int) {
         mBorderColor = color
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     // unit：dp
     fun setBorderWidth(width: Int) {
         mBorderWidth = width * resources.displayMetrics.density
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun setTextStyle(style: Int) {
@@ -276,18 +299,14 @@ class CircleTextView @JvmOverloads constructor(
             else -> {
             }
         }
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun getTextStyle() = mTextStyle
 
     fun setShadow(has: Boolean) {
         mShadow = has
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun hasShadow() = mShadow
@@ -297,9 +316,7 @@ class CircleTextView @JvmOverloads constructor(
     fun setMaxLength(length: Int) {
         if (length > 0) {
             mMaxLength = length
-            setUpPaint()
-            requestLayout()
-            invalidate()
+            setUp()
         }
     }
 
@@ -308,14 +325,19 @@ class CircleTextView @JvmOverloads constructor(
     // Unit in dp
     fun setOffset(offset: Int) {
         mOffset = offset.toFloat()
-        requestLayout()
-        invalidate()
+        setUp()
     }
 
     fun setLetterSpace(space: Float) {
         mLetterSpace = space
-        setUpPaint()
-        requestLayout()
-        invalidate()
+        setUp()
+    }
+
+    fun setCircleSize(type: CircleSize) {
+        mCircleSize = type.ordinal
+        setUp()
     }
 }
+
+
+enum class CircleSize(type: Int) { MATCH_PARENT(0), WRAP_TEXT(1) }

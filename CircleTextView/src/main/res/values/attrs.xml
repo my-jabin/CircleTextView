@@ -16,5 +16,9 @@
         </attr>
         <attr name="letterSpace" format="float" />
         <attr name="offset" format="dimension" />
+        <attr name="circle_size" format="enum">
+            <enum name="match_parent" value="0" />
+            <enum name="wrap_text" value="1" />
+        </attr>
     </declare-styleable>
 </resources>

@@ -17,12 +17,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                app:borderColor="#52909FA0"
+                app:borderColor="#52667D8A"
                 app:borderWidth="2dp"
                 app:circleColor="#ffb74d"
-                app:letterSpace="0.2"
+                app:letterSpace="0.1"
+                app:shadow="true"
                 app:text="Android"
-                app:textSize="18sp" />
+                app:textSize="20sp" />
 
 
         <TextView
@@ -48,9 +49,10 @@
                 app:borderColor="#52909FA0"
                 app:borderWidth="2dp"
                 app:maxLength="1"
+                app:circle_size="match_parent"
                 app:text="Java"
                 app:offset="32dp"
-                app:textColor="@color/colorAccent"
+                app:textColor="#171712"
                 app:textSize="58sp" />
 
         <TextView

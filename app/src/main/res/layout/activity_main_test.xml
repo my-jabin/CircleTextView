@@ -19,6 +19,19 @@
             app:textSize="32sp" />
 
     <com.jiujiu.lib.CircleTextView
+            android:id="@+id/ctv2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:borderColor="@android:color/darker_gray"
+            app:circleColor="#a5d6a7"
+            app:circle_size="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shadow="true"
+            app:text="HELL"
+            app:textSize="32sp" />
+
+    <com.jiujiu.lib.CircleTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:borderColor="@color/colorAccent"
@@ -134,6 +147,25 @@
             android:text="setLetterSpace"
             app:layout_constraintStart_toEndOf="@id/buttonSetOffset"
             app:layout_constraintTop_toBottomOf="@id/buttonSetTextFill" />
+
+    <Button
+            android:id="@+id/buttonCircleSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setCircleSizeWrapText"
+            android:text="setCircleWrapText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetOffset" />
+
+    <Button
+            android:id="@+id/buttonCircleSize2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setCircleSizeMatchParent"
+            android:text="setCircleMatchParent"
+            app:layout_constraintStart_toEndOf="@id/buttonCircleSize"
+            app:layout_constraintTop_toBottomOf="@id/buttonSetOffset" />
+
 
     <!--    <LinearLayout-->
     <!--            android:layout_width="match_parent"-->
